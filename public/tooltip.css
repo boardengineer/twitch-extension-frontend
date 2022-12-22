@@ -1,0 +1,46 @@
+.relic {
+  position: relative;
+  display: inline-block;
+}
+
+.relic .relicToolTipTop {
+  width: 320px;
+  height: 32px;
+  background-image: url("img/tooltip/tipTop.png");
+}
+
+.relic .relicToolTipBottom {
+  width: 320px;
+  height: 32px;
+  background-image: url("img/tooltip/tipBot.png");
+}
+
+.relic .relicToolTipBody {
+  width: 320px;
+  margin-top: -15px;
+  margin-bottom: -15px;
+ 
+  background-image: url("img/tooltip/tipMid.png");
+  background-repeat: repeat-y;
+  background-position: left;
+  background-size: contain;
+
+  font-family: Kreon;
+  color: #fff;
+  text-align: left;
+}
+
+.relic .relicToolTip {
+  visibility: hidden;
+  padding-left: 50px;
+  padding-top: 50px;
+
+  /* margin-top:10px; */
+  z-index: 1;
+
+  font-family: Kreon;
+}
+
+.relic:hover .relicToolTip{
+  visibility: visible;
+}

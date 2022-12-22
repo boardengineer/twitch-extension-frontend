@@ -1,43 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kreon" />
+    <link rel="stylesheet" href="default.css" />
+    <link rel="stylesheet" href="tooltip.css" />
     <title>Viewer Page</title>
 </head>
-<style>
-.relic {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.relic .relicToolTip {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 110%;
-}
-
-.relic .relicToolTip::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent black transparent transparent;
-}
-.relic:hover .relicToolTip{
-  visibility: visible;
-}
-</style>
 <body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
     <div id="app" class="full-height"></div>
     <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
