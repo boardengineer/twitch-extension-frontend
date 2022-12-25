@@ -1,21 +1,21 @@
 .relic {
-  position: relative;
+  position: absolute;
   display: inline-block;
 }
 
-.relic .relicToolTipTop {
+.relicToolTipTop {
   width: 320px;
   height: 32px;
   background-image: url("img/tooltip/tipTop.png");
 }
 
-.relic .relicToolTipBottom {
+.relicToolTipBottom {
   width: 320px;
   height: 32px;
   background-image: url("img/tooltip/tipBot.png");
 }
 
-.relic .relicToolTipBody {
+.relicToolTipBody {
   width: 320px;
   margin-top: -15px;
   margin-bottom: -15px;
@@ -30,7 +30,19 @@
   text-align: left;
 }
 
-.relic .relicToolTip {
+.tooltipHeading {
+	font-weight: 500;
+	color: #efc851ff;
+	padding-bottom: 10px;
+	padding-left: 15px;
+}
+
+.tooltiptext {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.relicToolTip {
   visibility: hidden;
   padding-left: 50px;
   padding-top: 50px;
