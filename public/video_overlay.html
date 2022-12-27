@@ -9,26 +9,35 @@
 	</head>
 	<body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 		<div id="overlay">
-			<div id="overlay-contents">
+			<div>
 				<div id="overlay-controls">
 					<div id="returnbuttoncontainer">
 						<div id="returnbutton"><p>Return</p></div>
 					</div>
 				</div>
-				<div id="map-display">
+				<div id="overlay-content">
 					<div id="map-container">
-						<img id="map-image" src="img/completemap.png">
-						<img id="chest-icon" src="img/chest.png">
-						<img id="elite-icon" src="img/elite.png">
-						<img id="event-icon" src="img/event.png">
-						<img id="monster-icon" src="img/monster.png">
-						<img id="rest-icon" src="img/rest.png">
-						<img id="shop-icon" src="img/shop.png">
+						<img id="map-image" src="img/map/completemap.png">
+						<img id="chest-icon" src="img/map/chest.png">
+						<img id="elite-icon" src="img/map/elite.png">
+						<img id="event-icon" src="img/map/event.png">
+						<img id="monster-icon" src="img/map/monster.png">
+						<img id="rest-icon" src="img/map/rest.png">
+						<img id="shop-icon" src="img/map/shop.png">
+
+						<img id="automaton-icon" src="img/map/boss/automaton.png">
+						<img id="awakened-icon" src="img/map/boss/awakened.png">
+						<img id="champ-icon" src="img/map/boss/champ.png">
+						<img id="collector-icon" src="img/map/boss/collector.png">
+						<img id="donu-icon" src="img/map/boss/donu.png">
+						<img id="guardian-icon" src="img/map/boss/guardian.png">
+						<img id="heart-icon" src="img/map/boss/heart.png">
+						<img id="hexaghost-icon" src="img/map/boss/hexaghost.png">
+						<img id="slime-icon" src="img/map/boss/slime.png">
+						<img id="time-eater-icon" src="img/map/boss/timeeater.png">
+
 						<canvas id="map-canvas"></canvas>
 					</div>
-				</div>
-
-				<div id="decklist-container">
 					<div id="decklist">
 					</div>
 				</div>
@@ -37,6 +46,9 @@
 		<div id="app" class="full-height"></div>
 		<script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
 		<script src="jquery-3.3.1.min.js"></script>
+		<script src="decklist.js" type="text/javascript"></script>
+		<script src="map.js" type="text/javascript"></script>
+		<script src="relics.js" type="text/javascript"></script>
 		<script src="viewer.js" type="text/javascript"></script>
 		<div id="relic-bar">
 		</div>

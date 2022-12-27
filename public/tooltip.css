@@ -1,33 +1,38 @@
 .relic {
-  position: absolute;
-  display: inline-block;
+	overflow: visible;
+	position: absolute;
+	display: inline-block;
+}
+
+#relic-bar {
+	overflow: auto;
 }
 
 .relicToolTipTop {
-  width: 320px;
-  height: 32px;
-  background-image: url("img/tooltip/tipTop.png");
+	width: 320px;
+	height: 32px;
+	background-image: url("img/tooltip/tipTop.png");
 }
 
 .relicToolTipBottom {
-  width: 320px;
-  height: 32px;
-  background-image: url("img/tooltip/tipBot.png");
+	width: 320px;
+	height: 32px;
+	background-image: url("img/tooltip/tipBot.png");
 }
 
 .relicToolTipBody {
-  width: 320px;
-  margin-top: -15px;
-  margin-bottom: -15px;
- 
-  background-image: url("img/tooltip/tipMid.png");
-  background-repeat: repeat-y;
-  background-position: left;
-  background-size: contain;
+	width: 320px;
+	margin-top: -15px;
+	margin-bottom: -15px;
 
-  font-family: Kreon;
-  color: #fff;
-  text-align: left;
+	background-image: url("img/tooltip/tipMid.png");
+	background-repeat: repeat-y;
+	background-position: left;
+	background-size: contain;
+
+	font-family: Kreon;
+	color: #fff;
+	text-align: left;
 }
 
 .tooltipHeading {
@@ -43,16 +48,16 @@
 }
 
 .relicToolTip {
-  visibility: hidden;
-  padding-left: 50px;
-  padding-top: 50px;
+	visibility: hidden;
+	padding-left: 50px;
+	padding-top: 50px;
 
-  /* margin-top:10px; */
-  z-index: 1;
+	/* margin-top:10px; */
+	z-index: 1;
 
-  font-family: Kreon;
+	font-family: Kreon;
 }
 
 .relic:hover .relicToolTip{
-  visibility: visible;
+	visibility: visible;
 }
