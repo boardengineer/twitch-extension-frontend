@@ -87,18 +87,36 @@ function enableMap(response) {
 	for(mapEdge of response.map_edges) {
 		ctx.beginPath();
 		ctx.lineWidth = 3;
-		ctx.setLineDash([15,15]);
+		ctx.setLineDash([10,7]);
 
 		var sourceNode = nodes[mapEdge.source];
 		var destinationNode = nodes[mapEdge.destination];
 
 		if (typeof destinationNode === "undefined") {
 			console.log("missing destination node " + mapEdge.destination);
+			console.log(response.map_nodes.length);
 			continue;
 		}
 
-		ctx.moveTo(sourceNode.xPos, sourceNode.yPos);
-		ctx.lineTo(destinationNode.xPos, destinationNode.yPos);
+		var x1 = sourceNode.xPos;
+		var y1 = sourceNode.yPos;
+		var x2 = destinationNode.xPos;
+		var y2 = destinationNode.yPos;
+		var deltaX = x2 - x1;
+		var deltaY = y2 - y1;
+
+		var length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+		var adjX = deltaX / length;
+		var adjY = deltaY / length;
+
+		ctx.moveTo(sourceNode.xPos + 50 * adjX, sourceNode.yPos + 50 * adjY);
+
+		var destAdjust = 50;
+
+		if(mapEdge.destination == 115) {
+			destAdjust = 175;
+		}
+		ctx.lineTo(destinationNode.xPos - destAdjust * adjX, destinationNode.yPos - destAdjust * adjY);
 
 		ctx.stroke();
 	}

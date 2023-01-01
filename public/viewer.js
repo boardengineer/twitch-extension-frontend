@@ -5,13 +5,15 @@ const twitch = window.Twitch.ext;
 var screenHeight;
 var screenWidth;
 
+var previousResponse = "";
+
 //const QUERY_URL = "http://127.0.01:8000";
 const QUERY_URL = "https://boardengineer.net";
 
 function slayBackendRequest () {
 	return {
 		type: 'GET',
-		url: QUERY_URL + '/player/players/1/',
+		url: QUERY_URL + '/player/twitchslaysspire/',
 		success: slayResponse,
 		error: customError,
 	};
@@ -24,6 +26,23 @@ twitch.onAuthorized(function (auth) {
 });
 
 function slayResponse (response, status) {
+	var shouldProcess = false;
+	if(!areEqual(response.deck, previousResponse.deck)) {
+		shouldProcess = true;
+	}
+	if(!areEqual(response.relics, previousResponse.relics)) {
+		shouldProcess = true;
+	}
+	if(!areEqual(response.map_nodes, previousResponse.map_nodes)) {
+		shouldProcess = true;
+	}
+
+	if(!shouldProcess) {
+		return;
+	}
+	previousResponse = response;
+
+
 	var username = response.twitch_username;
 	var currentHp = response.player_current_hp;
 	var maxHp = response.player_max_hp;
@@ -36,6 +55,33 @@ function slayResponse (response, status) {
 	enableDecklist(response);
 	enableMap(response);
 	enableRelicBar(response);
+}
+
+function areEqual(before, after) {
+	if(typeof before == "undefined" || typeof after == "undefined") {
+		return false;
+	}
+	if(before.length != after.length) {
+		return false;
+	}
+
+	for(var index in before) {
+		if(!index in before) {
+			return false;
+		}
+
+		for(key in before[index]) {
+			if(!key in after[index]) {
+				return false;
+			}
+
+			if(before[index][key] != after[index][key]) {
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 function showMap() {
@@ -84,4 +130,6 @@ $.ajax(slayBackendRequest());
 
 setInterval(function() {
 	$.ajax(slayBackendRequest()); 
+	console.log(twitch);
+	console.log(twitch.channelId);
 }, 5000);

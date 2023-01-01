@@ -31,6 +31,7 @@ function enableDecklist(response) {
 		var cardDiv = document.createElement("div");
 		var name = card.name;
 		name = name.replaceAll(" ", "");
+		name = name.replaceAll("'", "");
 		name = name.replaceAll("+", "Plus");
 		name = QUERY_URL + "/static/cards/" + name + ".png"
 		cardImage.src = name; 
