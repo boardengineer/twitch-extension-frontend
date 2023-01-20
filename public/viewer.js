@@ -13,7 +13,7 @@ const QUERY_URL = "https://boardengineer.net";
 function slayBackendRequest () {
 	return {
 		type: 'GET',
-		url: QUERY_URL + '/player/twitchslaysspire/',
+		url: QUERY_URL + '/player/605614377/',
 		success: slayResponse,
 		error: customError,
 	};
@@ -130,6 +130,4 @@ $.ajax(slayBackendRequest());
 
 setInterval(function() {
 	$.ajax(slayBackendRequest()); 
-	console.log(twitch);
-	console.log(twitch.channelId);
 }, 5000);
