@@ -27,19 +27,6 @@ twitch.onAuthorized(function (auth) {
 
 function slayResponse (response, status) {
 	var shouldProcess = false;
-	if(!areEqual(response.deck, previousResponse.deck)) {
-		shouldProcess = true;
-	}
-	if(!areEqual(response.relics, previousResponse.relics)) {
-		shouldProcess = true;
-	}
-	if(!areEqual(response.map_nodes, previousResponse.map_nodes)) {
-		shouldProcess = true;
-	}
-
-	if(!shouldProcess) {
-		return;
-	}
 	previousResponse = response;
 
 

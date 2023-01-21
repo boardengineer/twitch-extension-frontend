@@ -1,4 +1,8 @@
 function enableMap(response) {
+	if(!response.hasOwnProperty("map_nodes")) {
+		return;
+	}
+
 	var oldButton = document.getElementById("map-button");
 	if(oldButton != null) {
 		oldButton.remove();

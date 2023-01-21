@@ -1,4 +1,9 @@
 function enableDecklist(response) {
+	if(!response.hasOwnProperty("deck")){
+		return;
+	}
+
+
 	var existingButton = document.getElementById("deck-button");
 	if(existingButton != null) {
 		existingButton.remove();

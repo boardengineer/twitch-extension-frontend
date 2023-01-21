@@ -1,4 +1,9 @@
 function enableRelicBar(response) {
+	if(!response.hasOwnProperty("relics")) {
+		return;
+	}
+
+
 	$('#relic-bar').empty();
 	for(relic of response.relics) {
 		$('#relic-bar').append(createRelicDiv(relic));
