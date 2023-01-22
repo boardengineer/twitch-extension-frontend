@@ -7,13 +7,17 @@ var screenWidth;
 
 var previousResponse = "";
 
+// Default to Developer's channel ID for testing and development
+var channelId = "605614377";
+var userId = "605614377";
+
 //const QUERY_URL = "http://127.0.01:8000";
 const QUERY_URL = "https://boardengineer.net";
 
 function slayBackendRequest () {
 	return {
 		type: 'GET',
-		url: QUERY_URL + '/player/605614377/',
+		url: QUERY_URL + "/player/" + channelId + "/",
 		success: slayResponse,
 		error: customError,
 	};
@@ -23,8 +27,9 @@ twitch.onAuthorized(function (auth) {
 	// save our credentials
 	token = auth.token;
 	tuid = auth.userId;
+	channelId = auth.channelId;
+	userId = auth.userId
 });
-
 function slayResponse (response, status) {
 	var shouldProcess = false;
 	previousResponse = response;
@@ -42,33 +47,6 @@ function slayResponse (response, status) {
 	enableDecklist(response);
 	enableMap(response);
 	enableRelicBar(response);
-}
-
-function areEqual(before, after) {
-	if(typeof before == "undefined" || typeof after == "undefined") {
-		return false;
-	}
-	if(before.length != after.length) {
-		return false;
-	}
-
-	for(var index in before) {
-		if(!index in before) {
-			return false;
-		}
-
-		for(key in before[index]) {
-			if(!key in after[index]) {
-				return false;
-			}
-
-			if(before[index][key] != after[index][key]) {
-				return false;
-			}
-		}
-	}
-
-	return true;
 }
 
 function showMap() {
