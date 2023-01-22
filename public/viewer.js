@@ -11,13 +11,15 @@ var previousResponse = "";
 var channelId = "605614377";
 var userId = "605614377";
 
+var timestamp = 0;
+
 //const QUERY_URL = "http://127.0.01:8000";
 const QUERY_URL = "https://boardengineer.net";
 
 function slayBackendRequest () {
 	return {
 		type: 'GET',
-		url: QUERY_URL + "/player/" + channelId + "/",
+		url: QUERY_URL + "/player/" + channelId + "/?timestamp=" + timestamp,
 		success: slayResponse,
 		error: customError,
 	};
@@ -30,11 +32,8 @@ twitch.onAuthorized(function (auth) {
 	channelId = auth.channelId;
 	userId = auth.userId
 });
+
 function slayResponse (response, status) {
-	var shouldProcess = false;
-	previousResponse = response;
-
-
 	var username = response.twitch_username;
 	var currentHp = response.player_current_hp;
 	var maxHp = response.player_max_hp;
@@ -42,11 +41,17 @@ function slayResponse (response, status) {
 	screenHeight = response.screen_height;
 	screenWidth = response.screen_width;
 
+	timestamp = Math.max(timestamp, response.deck_update_time);
+	timestamp = Math.max(timestamp, response.decision_update_time);
+	timestamp = Math.max(timestamp, response.relic_update_time);
+	timestamp = Math.max(timestamp, response.map_update_time);
+
 	document.getElementById('returnbutton').onclick = off;
 
 	enableDecklist(response);
 	enableMap(response);
 	enableRelicBar(response);
+	enableDecisionUi(response);
 }
 
 function showMap() {
