@@ -11,7 +11,7 @@ function enableDecklist(response) {
 
 	// Create and place the deck button, it will show as an outline only.
 	var deckButton = document.createElement("button");
-	deckButton.onclick = showDecklist;
+	deckButton.onclick = toggleDecklist;
 	deckButton.style.position = "absolute";
 	deckButton.style.left = (response.deck_button_x * 100 / screenWidth) + "%";
 	deckButton.style.top = (100 - (response.deck_button_y + response.deck_button_height) * 100 / screenHeight) + "%";
@@ -19,6 +19,7 @@ function enableDecklist(response) {
 
 	deckButton.style.height = response.deck_button_height * 100 / screenHeight + "%";
 	deckButton.style.width = response.deck_button_width * 100 / screenWidth + "%";
+	deckButton.className =  "control-button";
 
 	deckButton.style.background = "none";
 	$('body').append(deckButton);

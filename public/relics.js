@@ -15,13 +15,19 @@ function createRelicDiv(relic) {
 	var relicDiv = document.createElement("div");
 
 	relicDiv.style.top = (100 - (relic.y_pos + relic.height) * 100 / screenHeight) + "%";
-	relicDiv.style.left = (relic.x_pos * 100 / screenWidth) + "%";
+
+	var leftPercent = relic.x_pos * 100 / screenWidth; 
+	relicDiv.style.left = leftPercent + "%";
 	relicDiv.style.height = relic.height * 100 / screenHeight + "%"; 
 	relicDiv.style.width = relic.width * 100 / screenWidth + "%"; 
 	relicDiv.className = "relic";
 
 	var toolTipContainer = document.createElement("div");
-	toolTipContainer.className = "relicToolTip";
+	if(leftPercent <= 60) {
+		toolTipContainer.className = "relic-tooltip-right";
+	} else {
+		toolTipContainer.className = "relic-tooltip-left";
+	}
 
 	var toolTipTop = document.createElement("div");
 	toolTipTop.className = "relicToolTipTop";

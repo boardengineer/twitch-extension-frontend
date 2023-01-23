@@ -5,6 +5,9 @@ const twitch = window.Twitch.ext;
 var screenHeight;
 var screenWidth;
 
+var deckVisible = false;
+var mapVisible = false;
+
 var previousResponse = "";
 
 // Default to Developer's channel ID for testing and development
@@ -54,39 +57,66 @@ function slayResponse (response, status) {
 	enableDecisionUi(response);
 }
 
-function showMap() {
-	document.getElementById("overlay").style.display = "block";
-	document.getElementById("decklist").style.display = "none";
-	document.getElementById("map-container").style.display = "flex";
-	disableRelicHover();
-}
+function toggleMap() {
+	if(!mapVisible) {
+		deckVisible = false;
+		document.getElementById("decklist").style.display = "none";
 
-function showDecklist() {
-	document.getElementById("overlay").style.display = "table";
-	document.getElementById("decklist").style.display = "block";
-	document.getElementById("map-container").style.display = "none";
-	disableRelicHover()
-}
+		document.getElementById("overlay").style.display = "table";
+		mapVisible = true;
+		document.getElementById("map-container").style.display = "flex";
 
-function disableRelicHover() {
-	var relics = document.getElementsByClassName("relic");
-	while(relics.length > 0) {
-		relics.item(0).className = "notrelic";
+		disableUnderlay();
+	} else {
+		deckVisible = false;
+		document.getElementById("decklist").style.display = "none";
+
+		document.getElementById("overlay").style.display = "none";
+		mapVisible = false;
+		document.getElementById("map-container").style.display = "none";
+
+		enableUnderlay();
 	}
 }
 
-function enableRelicHover() {
-	var relics = document.getElementsByClassName("notrelic");
-	while(relics.length > 0) {
-		relics.item(0).className = "relic";
+function toggleDecklist() {
+	if(!deckVisible) {
+		mapVisible = false;
+		document.getElementById("map-container").style.display = "none";
+
+		document.getElementById("overlay").style.display = "table";
+		deckVisible = true;
+		document.getElementById("decklist").style.display = "block";
+
+		disableUnderlay();
+	} else {
+		mapVisible = false;
+		document.getElementById("map-container").style.display = "none";
+
+		document.getElementById("overlay").style.display = "none";
+		deckVisible = false;
+		document.getElementById("decklist").style.display = "none";
+
+		enableUnderlay();
 	}
+}
+
+function disableUnderlay() {
+	document.getElementById("decision-buttons").style.display = "none";
+	document.getElementById("relic-bar").style.display = "none";
+}
+
+function enableUnderlay() {
+	document.getElementById("decision-buttons").style.display = "block";
+	document.getElementById("relic-bar").style.display = "block";
 }
 
 function off() {
 	document.getElementById("overlay").style.display = "none";
 	document.getElementById("decklist").style.display = "none";
 	document.getElementById("map-container").style.display = "none";
-	enableRelicHover();
+	
+	enableUnderlay();
 }
 
 function customError(jqXHR, exception, errorMessage) {

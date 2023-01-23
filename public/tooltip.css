@@ -1,4 +1,5 @@
 .relic {
+	cursor: url("img/magglass.png"), auto;
 	overflow: visible;
 	position: absolute;
 	display: inline-block;
@@ -47,7 +48,8 @@
 	padding-right: 15px;
 }
 
-.relicToolTip {
+.relic-tooltip-right {
+	position: relative;
 	visibility: hidden;
 	padding-left: 50px;
 	padding-top: 50px;
@@ -58,6 +60,25 @@
 	font-family: Kreon;
 }
 
-.relic:hover .relicToolTip{
+.relic-tooltip-left {
+	position: relative;
+
+	left: -370px;
+	visibility: hidden;
+	padding-left: 50px;
+	padding-top: 50px;
+
+	/* margin-top:10px; */
+	z-index: 1;
+
+	font-family: Kreon;
+}
+
+
+.relic:hover .relic-tooltip-right {
+	visibility: visible;
+}
+
+.relic:hover .relic-tooltip-left {
 	visibility: visible;
 }

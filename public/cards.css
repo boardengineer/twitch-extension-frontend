@@ -58,6 +58,22 @@
 	width: 100%;
 }
 
+.vote-button {
+	cursor: url("img/cursor.png"), auto;
+}
+
+.vote-button-pending {
+	border-color: yellow;
+	border-width: 10px;
+	cursor: url("img/cursor.png"), auto;
+}
+
+.vote-button-selected {
+	border-color: green;
+	border-width: 10px;
+	cursor: url("img/cursor.png"), auto;
+}
+
 .cardcell {
 	display: table-cell;
 	vertical-align:top;
@@ -68,6 +84,10 @@
 	width: 100%;
 	height: auto;
 } 
+
+.control-button {
+	cursor: url("img/cursor.png"), auto;
+}
 
 #returnbutton {
 	background: url("img/cancelButton.png") no-repeat;

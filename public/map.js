@@ -10,7 +10,7 @@ function enableMap(response) {
 
 	var mapButton = document.createElement("button");
 	mapButton.id = "map-button";
-	mapButton.onclick = showMap;
+	mapButton.onclick = toggleMap;
 
 	mapButton.style.position = "absolute";
 	mapButton.style.left = (response.map_button_x * 100 / screenWidth) + "%";
@@ -18,6 +18,7 @@ function enableMap(response) {
 
 	mapButton.style.height = response.map_button_height * 100 / screenHeight + "%";
 	mapButton.style.width = response.deck_button_width * 100 / screenWidth + "%";
+	mapButton.className =  "control-button";
 
 	mapButton.style.background = "none";
 	$('body').append(mapButton);
