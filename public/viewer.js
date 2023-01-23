@@ -30,7 +30,7 @@ twitch.onAuthorized(function (auth) {
 	token = auth.token;
 	tuid = auth.userId;
 	channelId = auth.channelId;
-	userId = auth.userId
+	userId = auth.userId;
 });
 
 function slayResponse (response, status) {
@@ -100,4 +100,4 @@ $.ajax(slayBackendRequest());
 
 setInterval(function() {
 	$.ajax(slayBackendRequest()); 
-}, 5000);
+}, 1000);

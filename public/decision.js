@@ -6,19 +6,15 @@ function enableDecisionUi(response) {
 
 	$('#decision-buttons').empty();
 	for(decision of response.decision_prompts) {
-		for(option of decision.options) {
-			console.log(option);
+		var optionIds = {};
+		for(var i = 0; i < decision.options.length; i++) {
+			var option = decision.options[i]
+			console.log("creating button for " + option.id);
 			var optionButton = document.createElement("button");
+			var optionId = option.id + "";
 
-			optionButton.onclick = function() {
-				var data = {"option":option.id,"userId":userId}
-				$.ajax({
-					type: 'PUT',
-					url: QUERY_URL + "/player/vote/",
-					contentType: "application/json",
-					data: JSON.stringify(data),
-				});
-			}
+			optionButton.value = option.id;
+			optionButton.onclick = (event) => { sendVote(event.currentTarget.value);};
 
 			optionButton.style.position = "absolute";
 			optionButton.style.left = (option.x_pos * 100 / screenWidth) + "%";
@@ -32,4 +28,14 @@ function enableDecisionUi(response) {
 		} 
 	}
 
+}
+
+function sendVote(optionId) {
+	var data = {"option":optionId,"userId":userId}
+	$.ajax({
+		type: 'PUT',
+		url: QUERY_URL + "/player/vote/",
+		contentType: "application/json",
+		data: JSON.stringify(data),
+	});
 }
